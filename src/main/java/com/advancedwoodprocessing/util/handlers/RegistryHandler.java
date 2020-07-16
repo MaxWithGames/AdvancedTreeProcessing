@@ -42,5 +42,6 @@ public class RegistryHandler {
 	
 	public static void preInitRegisters() {
 		EventHandler.registerEvents();
+		CraftingHandler.removeRecipes();
 	}
 }
