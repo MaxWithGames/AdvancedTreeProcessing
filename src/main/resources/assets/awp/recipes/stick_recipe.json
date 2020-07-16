@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "SS",
+        "SS"
+    ],
+    "key": {
+        "S": {
+            "type": "forge:ore_dict",
+            "ore": "treeSapling"
+        }
+    },
+    "result": {
+        "item": "minecraft:stick",
+        "count": 16
+    }
+}

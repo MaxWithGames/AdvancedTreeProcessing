@@ -1,0 +1,10 @@
+
+//Items
+item.scraper.name=Scraper
+item.flint_axe.name=Flint axe
+item.flint_axe_head.name=Flint axe head
+item.plank.name=Plank
+
+//Blocks
+tile.woodprocessor.name=Wood processor
+tile.small_log.name=Small log

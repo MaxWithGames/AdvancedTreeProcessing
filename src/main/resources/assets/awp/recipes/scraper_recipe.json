@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " H",
+        "S "
+    ],
+    "key": {
+        "H": {
+            "item": "minecraft:flint"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "awp:scraper",
+        "count": 1
+    }
+}
