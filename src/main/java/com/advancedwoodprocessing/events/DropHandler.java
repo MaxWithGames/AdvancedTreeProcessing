@@ -12,12 +12,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.oredict.OreDictionary;
 
 @EventBusSubscriber
 public class DropHandler {
 	@SubscribeEvent
 	public void scraper(HarvestDropsEvent event)
 	{
+		for (ItemStack item : OreDictionary.getOres("logWood"))
+			System.out.println(item);
+		
 		if (event.getWorld().isRemote || event.getHarvester() == null || event.isSilkTouching())
 			return;
 
@@ -26,6 +30,7 @@ public class DropHandler {
 		
 		Block block = event.getState().getBlock();
 		//System.out.println(block);
+		
 		
 		if ((block == Blocks.LOG || block == Blocks.LOG2) && (held instanceof ItemScraper)) {
 			event.getDrops().clear();
@@ -51,7 +56,7 @@ public class DropHandler {
 		if ((block == Blocks.LOG || block == Blocks.LOG2) && (held instanceof ItemAxe)) {
 			event.getDrops().clear();
 			event.setDropChance(1.0F);
-			event.getDrops().add(new ItemStack(ModBlocks.SMALL_LOG, 4));
+			event.getDrops().add(new ItemStack(ModBlocks.SMALL_LOG, 8));
 		}
 	}
 }

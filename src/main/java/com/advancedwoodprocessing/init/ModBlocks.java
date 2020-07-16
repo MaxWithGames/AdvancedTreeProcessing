@@ -16,6 +16,6 @@ import net.minecraft.item.Item;
 public class ModBlocks {
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
 	
-	public static final Block WOODPROCESSOR = new WoodProcessor("woodprocessor", Material.WOOD, CreativeTabs.BUILDING_BLOCKS);
-	public static final Block SMALL_LOG = new SmallLog("small_log", Material.WOOD, CreativeTabs.BUILDING_BLOCKS);
+	public static final Block WOODPROCESSOR = new WoodProcessor("woodprocessor", Material.WOOD, ModItems.AWT_TAB);
+	public static final Block SMALL_LOG = new SmallLog("small_log", Material.WOOD, ModItems.AWT_TAB);
 }

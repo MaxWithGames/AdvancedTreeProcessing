@@ -45,13 +45,22 @@ public class SmallLog extends BlockBase implements IHasModel{
 		return state.withProperty(on_woodprocessor, worldIn.getBlockState(pos.add(0, -1, 0)).getBlock() instanceof WoodProcessor);
 	}
 	
+	private int getPlanksDropCount() {
+		double luck = Math.random();
+		if (luck < 0.25)
+			return 1;
+		if (luck > 0.75)
+			return 3;
+		return 2;
+	}
+	
 	@Override
 	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		if (this.harvesters != null)
 			if ((this.harvesters.get().getHeldItemMainhand().getItem() instanceof ItemAxe) &&  
 			(world.getBlockState(pos.add(0, -1, 0)).getBlock() instanceof WoodProcessor)) {
-				 drops.add(new ItemStack(ModItems.PLANK, 2));
-				 return;
+				drops.add(new ItemStack(ModItems.PLANK, getPlanksDropCount()));
+				return;
 			}
 		drops.add(new ItemStack(ModBlocks.SMALL_LOG,  1));
 	}
@@ -67,7 +76,7 @@ public class SmallLog extends BlockBase implements IHasModel{
 	public SmallLog(String name, Material material, CreativeTabs tab) {
 		super(name, material, tab);
 		
-		setHardness(0.0f);
+		setHardness(0.01f);
 		setHarvestLevel("axe", 0);
 		setLightOpacity(0);
 		
