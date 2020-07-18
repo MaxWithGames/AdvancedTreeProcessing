@@ -1,5 +1,6 @@
 package com.advancedwoodprocessing.util.handlers;
 
+import com.advancedwoodprocessing.events.DropHandler;
 import com.advancedwoodprocessing.init.ModBlocks;
 import com.advancedwoodprocessing.init.ModItems;
 import com.advancedwoodprocessing.util.IHasModel;
@@ -12,6 +13,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.oredict.OreDictionary;
 
 @EventBusSubscriber
 public class RegistryHandler {
@@ -43,5 +45,9 @@ public class RegistryHandler {
 	public static void preInitRegisters() {
 		EventHandler.registerEvents();
 		CraftingHandler.removeRecipes();
+	}
+	
+	public static void postInitRegisters() {
+		DropHandler.Woods = OreDictionary.getOres("logWood");
 	}
 }
