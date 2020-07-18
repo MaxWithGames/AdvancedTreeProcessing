@@ -20,4 +20,5 @@ public class ModBlocks {
 	public static final Block WOODPROCESSOR = new WoodProcessor("woodprocessor", Material.WOOD, ModItems.AWT_TAB);
 	public static final Block SMALL_LOG = new SmallLog("small_log", Material.WOOD, ModItems.AWT_TAB);
 	public static final Block BLOCK_PLANK = new BlockPlank("block_plank", Material.WOOD, ModItems.AWT_TAB);
+	public static final Block BURNING_BLOCK_PLANK = new BlockPlank("burning_block_plank", Material.WOOD, ModItems.AWT_TAB);
 }

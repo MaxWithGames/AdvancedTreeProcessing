@@ -10,6 +10,7 @@ item.flint_bone_axe.name=Flint and bone axe
 tile.woodprocessor.name=Wood processor
 tile.small_log.name=Small log
 tile.block_plank.name=Block plank
+tile.burning_block_plank.name=Burning block plank
 
 //Tabs
 itemGroup.awp=Advanced Wood Processing
