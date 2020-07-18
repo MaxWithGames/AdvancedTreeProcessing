@@ -16,7 +16,7 @@ import net.minecraft.item.ItemTool;
 public class ItemScraper extends ItemTool implements IHasModel {
 	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.LOG, Blocks.LOG2);
 	
-	public ItemScraper(String name, Item.ToolMaterial material, CreativeTabs tab) {
+	public ItemScraper(String name, ToolMaterial material, CreativeTabs tab) {
 		super(1.0F, -2.8F, material, EFFECTIVE_ON);
 		
 		setUnlocalizedName(name);
