@@ -3,6 +3,7 @@ package com.advancedwoodprocessing.events;
 import com.advancedwoodprocessing.blocks.WoodProcessor;
 import com.advancedwoodprocessing.init.ModBlocks;
 import com.advancedwoodprocessing.items.tools.ItemKnife;
+import com.advancedwoodprocessing.items.tools.ItemSaw;
 import com.advancedwoodprocessing.items.tools.ItemScraper;
 
 import net.minecraft.block.Block;
@@ -74,7 +75,7 @@ public class DropHandler {
 		Item held = event.getHarvester().getHeldItemMainhand().getItem(); 
 		Block block = event.getState().getBlock();
 		
-		if (checkBlockOreDict(new ItemStack(Item.getItemFromBlock(block)), Woods) && (held instanceof ItemAxe)) {
+		if (checkBlockOreDict(new ItemStack(Item.getItemFromBlock(block)), Woods) && (held instanceof ItemSaw)) {
 			event.getDrops().clear();
 			event.setDropChance(1.0F);
 			event.getDrops().add(new ItemStack(ModBlocks.SMALL_LOG, 8));

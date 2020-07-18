@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.advancedwoodprocessing.items.ItemBase;
 import com.advancedwoodprocessing.items.tools.ItemKnife;
+import com.advancedwoodprocessing.items.tools.ItemSaw;
 import com.advancedwoodprocessing.items.tools.ItemScraper;
 import com.advancedwoodprocessing.items.tools.ItemToolAxe;
 
@@ -38,8 +39,23 @@ public class ModItems {
 	public static final ToolMaterial MATERAIL_FLINT_BONE_AXE = EnumHelper.addToolMaterial("material_flint_bone_axe", 0, 29, 2.0f, 0.0f, 10);
 	public static final ItemAxe FLINT_BONE_AXE = new ItemToolAxe("flint_bone_axe", MATERAIL_FLINT_BONE_AXE, AWT_TAB);
 	
-	public static final ToolMaterial MATERIAL_KNIFE = EnumHelper.addToolMaterial("material_knife", 0, 1, 2.0f, 0.0f, 0);
+	public static final ToolMaterial MATERIAL_KNIFE = EnumHelper.addToolMaterial("material_knife", 0, 5, 2.0f, 0.0f, 0);
 	public static final ItemTool KNIFE = new ItemKnife("knife", MATERIAL_KNIFE, AWT_TAB);
+
+	public static final ToolMaterial MATERIAL_FLINT_SAW = EnumHelper.addToolMaterial("material_flint_saw",0,32,2.0f,0.0f, 10);
+	public static final ItemAxe FLINT_SAW = new ItemSaw("flint_saw",MATERIAL_FLINT_SAW, AWT_TAB, 3.0f, -3.2f);
+
+	public static final ToolMaterial MATERIAL_STONE_SAW = EnumHelper.addToolMaterial("material_stone_saw",0,64,4.0f,0.0f, 10);
+	public static final ItemAxe STONE_SAW = new ItemSaw("stone_saw",MATERIAL_STONE_SAW, AWT_TAB, 4.0f, -3.0f);
+
+	public static final ToolMaterial MATERIAL_IRON_SAW = EnumHelper.addToolMaterial("material_iron_saw",0,128,6.0f,0.0f, 10);
+	public static final ItemAxe IRON_SAW = new ItemSaw("iron_saw",MATERIAL_IRON_SAW, AWT_TAB, 5.0f, -2.8f);
+
+	public static final ToolMaterial MATERIAL_GOLDEN_SAW = EnumHelper.addToolMaterial("material_golden_saw",0,256,6.0f,0.0f, 20);
+	public static final ItemAxe GOLDEN_SAW = new ItemSaw("golden_saw",MATERIAL_GOLDEN_SAW, AWT_TAB, 5.0f, -2.8f);
+
+	public static final ToolMaterial MATERIAL_DIAMOND_SAW = EnumHelper.addToolMaterial("material_diamond_saw",0,512,9.0f,0.0f, 10);
+	public static final ItemAxe DIAMOND_SAW = new ItemSaw("diamond_saw",MATERIAL_DIAMOND_SAW, AWT_TAB, 6.0f, -2.0f);
 
 	public static final Item FLINT_AXE_HEAD = new ItemBase("flint_axe_head", AWT_TAB);
 	public static final Item PLANK = new ItemBase("plank", AWT_TAB);
