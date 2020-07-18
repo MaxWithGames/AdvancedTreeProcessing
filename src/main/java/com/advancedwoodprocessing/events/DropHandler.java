@@ -26,14 +26,14 @@ public class DropHandler {
 	@SubscribeEvent
 	public void scraper(HarvestDropsEvent event)
 	{
-		for (ItemStack item : Woods) {
+		/*for (ItemStack item : Woods) {
 			System.out.println(item.getDisplayName());
 			System.out.println(item.getItem().getUnlocalizedName());
 			System.out.println(item.getItem().getRegistryName());
 			for (int i = 0; i < 10; i++)
 				System.out.println("dmg " + i + ":" + item.getItem().getMetadata(i));
 			System.out.println(item.getMetadata());
-		}
+		}*/
 		
 		if (event.getWorld().isRemote || event.getHarvester() == null || event.isSilkTouching())
 			return;
