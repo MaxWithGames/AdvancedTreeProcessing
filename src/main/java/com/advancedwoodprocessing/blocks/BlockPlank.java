@@ -1,14 +1,17 @@
 package com.advancedwoodprocessing.blocks;
 
 import com.advancedwoodprocessing.init.ModBlocks;
+import com.advancedwoodprocessing.init.ModItems;
 import com.advancedwoodprocessing.util.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -46,10 +49,11 @@ public class BlockPlank extends BlockBase implements IHasModel {
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 
-        if (playerIn.getHeldItem(hand).getItem() == Items.STICK){
-            if (Math.random() >= 0.95)
-                worldIn.setBlockState(pos, ModBlocks.BURNING_BLOCK_PLANK.getDefaultState());
-
+        if (playerIn.getHeldItem(hand).getItem() == ModItems.BOW_AND_STICK){
+            if (Math.random() >= 0.95) {
+            	playerIn.replaceItemInInventory(playerIn.inventory.currentItem, new ItemStack(ModItems.PLANK_BURNING));
+            	worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
+            }
         }
 
         return true;

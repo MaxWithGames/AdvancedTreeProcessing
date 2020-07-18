@@ -1,0 +1,17 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "awp:awp_coal_dust"
+        }
+    },
+    "result": {
+        "item": "minecraft:coal",
+        "data": 1
+    }
+}

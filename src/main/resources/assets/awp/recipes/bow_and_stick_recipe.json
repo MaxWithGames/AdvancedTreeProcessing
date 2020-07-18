@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "B ",
+        " S"
+    ],
+    "key": {
+        "B": {
+            "item": "minecraft:bow"
+        },
+        "S": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "awp:bow_and_stick",
+        "count": 1
+    }
+}

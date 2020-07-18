@@ -3,6 +3,7 @@ package com.advancedwoodprocessing.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.advancedwoodprocessing.items.BurningPlank;
 import com.advancedwoodprocessing.items.ItemBase;
 import com.advancedwoodprocessing.items.tools.ItemKnife;
 import com.advancedwoodprocessing.items.tools.ItemSaw;
@@ -61,4 +62,8 @@ public class ModItems {
 	public static final Item PLANK = new ItemBase("plank", AWT_TAB);
 	public static final Item HARDEN_FLINT = new ItemBase("harden_flint", AWT_TAB);
 	public static final Item FLINT_AND_CLAY = new ItemBase("flint_and_clay", AWT_TAB);
+	
+	public static final Item COAL_DUST = new ItemBase("awp_coal_dust", AWT_TAB);
+	public static final Item BOW_AND_STICK = new ItemBase("bow_and_stick", AWT_TAB).setMaxStackSize(1);
+	public static final Item PLANK_BURNING = new BurningPlank("plank_burning", AWT_TAB);
 }

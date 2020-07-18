@@ -1,8 +1,12 @@
 package com.advancedwoodprocessing.blocks;
 
+import java.util.Random;
+
 import com.advancedwoodprocessing.init.ModBlocks;
 import com.advancedwoodprocessing.init.ModItems;
+import com.advancedwoodprocessing.util.BlockTileEntity;
 import com.advancedwoodprocessing.util.IHasModel;
+import com.advancedwoodprocessing.util.entities.TileEntityCounter;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -18,23 +22,24 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 
 public class SmallLog extends BlockBase implements IHasModel{
-	static final PropertyBool on_woodprocessor = PropertyBool.create("on_woodprocessor");
+	static final PropertyBool ON_WOODPROCESSOR = PropertyBool.create("on_woodprocessor");
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
-	    return new BlockStateContainer(this, new IProperty[] {on_woodprocessor});
+	    return new BlockStateContainer(this, new IProperty[] {ON_WOODPROCESSOR});
 	}
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-	    return getDefaultState().withProperty(on_woodprocessor, meta == 0 ? false : true);
+	    return getDefaultState().withProperty(ON_WOODPROCESSOR, meta == 0 ? false : true);
 	}
 	
 	@Override
 	public int getMetaFromState(IBlockState state) {
-	    boolean bool = state.getValue(on_woodprocessor).booleanValue();
+	    boolean bool = state.getValue(ON_WOODPROCESSOR).booleanValue();
 	    if (bool)
 	    	return 1;
 	    return 0;
@@ -42,7 +47,7 @@ public class SmallLog extends BlockBase implements IHasModel{
 	
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		return state.withProperty(on_woodprocessor, worldIn.getBlockState(pos.add(0, -1, 0)).getBlock() instanceof WoodProcessor);
+		return state.withProperty(ON_WOODPROCESSOR, worldIn.getBlockState(pos.add(0, -1, 0)).getBlock() instanceof WoodProcessor);
 	}
 	
 	private int getPlanksDropCount() {
@@ -73,6 +78,8 @@ public class SmallLog extends BlockBase implements IHasModel{
         return new AxisAlignedBB(0.3125f, 0.0f, 0.3125f, 0.6875f, 0.5f, 0.6875f);
     }
 	
+	private int timer = 100;
+	
 	public SmallLog(String name, Material material, CreativeTabs tab) {
 		super(name, material, tab);
 		
@@ -80,7 +87,7 @@ public class SmallLog extends BlockBase implements IHasModel{
 		setHarvestLevel("axe", 0);
 		setLightOpacity(0);
 		
-		setDefaultState(this.blockState.getBaseState().withProperty(on_woodprocessor, false));
+		setDefaultState(this.blockState.getBaseState().withProperty(ON_WOODPROCESSOR, false));
 	}
 	
 	@Override

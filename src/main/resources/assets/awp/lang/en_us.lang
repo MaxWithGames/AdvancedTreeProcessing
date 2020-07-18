@@ -1,4 +1,3 @@
-
 //Items
 item.scraper.name=Scraper
 item.flint_axe.name=Flint axe
@@ -13,13 +12,16 @@ item.stone_saw.name=Stone saw
 item.iron_saw.name=Iron saw
 item.golden_saw.name=Golden saw
 item.diamond_saw.name=Diamond saw
-
+item.awp_coal_dust.name=Coal dust
+item.bow_and_stick.name=Bow and stick
+item.plank_burning.name=Burning plank
 
 //Blocks
 tile.woodprocessor.name=Wood processor
 tile.small_log.name=Small log
 tile.block_plank.name=Block plank
 tile.burning_block_plank.name=Burning block plank
+tile.bonfire_base.name=Fireplace
 
 //Tabs
 itemGroup.awp=Advanced Wood Processing
