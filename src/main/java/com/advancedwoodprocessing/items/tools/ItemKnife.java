@@ -13,9 +13,10 @@ import net.minecraft.item.ItemTool;
 import java.util.Set;
 
 public class ItemKnife extends ItemTool implements IHasModel {
+    private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(Blocks.LOG, Blocks.LOG2);
 
     public ItemKnife(String name, Item.ToolMaterial material, CreativeTabs tab) {
-        super(1.0F, -2.8F, material, null);
+        super(1.0F, -2.8F, material, EFFECTIVE_ON);
 
         setUnlocalizedName(name);
         setRegistryName(name);

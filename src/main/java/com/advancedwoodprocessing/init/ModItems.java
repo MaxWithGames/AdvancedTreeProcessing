@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.advancedwoodprocessing.items.ItemBase;
+import com.advancedwoodprocessing.items.tools.ItemKnife;
 import com.advancedwoodprocessing.items.tools.ItemScraper;
 import com.advancedwoodprocessing.items.tools.ItemToolAxe;
 
@@ -37,6 +38,9 @@ public class ModItems {
 	public static final ToolMaterial MATERAIL_FLINT_BONE_AXE = EnumHelper.addToolMaterial("material_flint_bone_axe", 0, 29, 2.0f, 0.0f, 10);
 	public static final ItemAxe FLINT_BONE_AXE = new ItemToolAxe("flint_bone_axe", MATERAIL_FLINT_BONE_AXE, AWT_TAB);
 	
+	public static final ToolMaterial MATERIAL_KNIFE = EnumHelper.addToolMaterial("material_knife", 0, 1, 2.0f, 0.0f, 0);
+	public static final ItemTool KNIFE = new ItemKnife("knife", MATERIAL_KNIFE, AWT_TAB);
+
 	public static final Item FLINT_AXE_HEAD = new ItemBase("flint_axe_head", AWT_TAB);
 	public static final Item PLANK = new ItemBase("plank", AWT_TAB);
 	public static final Item HARDEN_FLINT = new ItemBase("harden_flint", AWT_TAB);

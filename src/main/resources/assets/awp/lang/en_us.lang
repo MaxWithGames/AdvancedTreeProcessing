@@ -7,6 +7,7 @@ item.plank.name=Plank
 item.flint_bone_axe.name=Flint and bone axe
 item.harden_flint.name=Harden flint
 item.flint_and_clay.name=Flint and clay
+item.knife.name=Knife
 
 //Blocks
 tile.woodprocessor.name=Wood processor
