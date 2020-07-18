@@ -39,4 +39,6 @@ public class ModItems {
 	
 	public static final Item FLINT_AXE_HEAD = new ItemBase("flint_axe_head", AWT_TAB);
 	public static final Item PLANK = new ItemBase("plank", AWT_TAB);
+	public static final Item HARDEN_FLINT = new ItemBase("harden_flint", AWT_TAB);
+	public static final Item FLINT_AND_CLAY = new ItemBase("flint_and_clay", AWT_TAB);
 }
