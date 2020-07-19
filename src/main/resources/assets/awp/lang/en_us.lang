@@ -21,7 +21,8 @@ tile.woodprocessor.name=Wood processor
 tile.small_log.name=Small log
 tile.block_plank.name=Block plank
 tile.burning_block_plank.name=Burning block plank
-tile.bonfire_base.name=Fireplace
+tile.bonfire_base.name=Fireplace with planks
+tile.bonfire.name=Fireplace
 
 //Tabs
 itemGroup.awp=Advanced Wood Processing

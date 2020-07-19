@@ -18,7 +18,7 @@ public class PlaceHandler {
 			
 			BlockPos pos = event.getPos();
 			
-			if (event.getPlacedBlock().getBlock() == ModBlocks.BONFIRE_BASE) {
+			if ((event.getPlacedBlock().getBlock() == ModBlocks.BONFIRE_BASE) || (event.getPlacedBlock().getBlock() == ModBlocks.BONFIRE)) {
 				for (int i = -1; i <= 1; i++)
 					for (int j = -1; j <= 1; j++)
 						if ((i != 0) || (j != 0)) {
@@ -31,7 +31,7 @@ public class PlaceHandler {
 					for (int j = -1; j <= 1; j++)
 						if ((i != 0) || (j != 0)) {
 							BlockPos checkedPos = pos.add(i, 0, j);
-							if (event.getWorld().getBlockState(checkedPos).getBlock() == ModBlocks.BONFIRE_BASE)
+							if ((event.getWorld().getBlockState(checkedPos).getBlock() == ModBlocks.BONFIRE_BASE) || (event.getWorld().getBlockState(checkedPos).getBlock() == ModBlocks.BONFIRE))
 								cancel = true;
 						}
 			}
