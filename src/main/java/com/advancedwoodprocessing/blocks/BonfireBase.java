@@ -50,11 +50,11 @@ public class BonfireBase extends BlockTileEntity<TileEntityCounter> implements I
 		}
     }
 	
-	//@Override
-	//public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
-    //{
-    //    return new AxisAlignedBB(-1.f, 0.0f, -1.f, 2.0f, 1.0f, 2.0f);
-    //}
+//	@Override
+//	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+//    {
+//        return new AxisAlignedBB(0.0f, 0.0f, 0.0f, 1.0f, 0.5f, 1.0f);
+//    }
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
@@ -116,7 +116,18 @@ public class BonfireBase extends BlockTileEntity<TileEntityCounter> implements I
     
 	public BonfireBase(String name, Material material, CreativeTabs tab) {
 		super(name, material, tab);
-		
+
+		setLightOpacity(0);
 		setDefaultState(this.blockState.getBaseState().withProperty(PLANKS_COUNT, 0));
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
 	}
 }
