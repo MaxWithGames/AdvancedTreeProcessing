@@ -11,10 +11,12 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -48,19 +50,15 @@ public class Bonfire extends BlockBase implements IHasModel {
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!worldIn.isRemote) {
-
-            if (playerIn.getHeldItem(hand).getItem() == ModItems.PLANK_BURNING){
+        	ItemStack held = playerIn.getHeldItem(hand);
+        	
+            if (held.getItem() == ModItems.PLANK_BURNING){
                 worldIn.setBlockState(pos, ModBlocks.BONFIRE_BASE.getDefaultState());
-            }
-
-            ItemStack held = playerIn.getHeldItem(hand);
-
-            if (held.getItem() == ModItems.PLANK_BURNING) {
 
                 NBTTagCompound ItemNBT = held.getTagCompound();
 
                 if (ItemNBT.hasKey("time_created")) {
-                    if(worldIn.getTileEntity(pos) instanceof TileEntityCounter){
+                    if (worldIn.getTileEntity(pos) instanceof TileEntityCounter) {
                         ((TileEntityCounter) worldIn.getTileEntity(pos)).addLifespan(worldIn.getTotalWorldTime() - ItemNBT.getLong("time_created"));
                         playerIn.replaceItemInInventory(playerIn.inventory.currentItem, new ItemStack(Blocks.AIR));
                     }

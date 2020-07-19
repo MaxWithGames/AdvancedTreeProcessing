@@ -1,5 +1,6 @@
 package com.advancedwoodprocessing.util.handlers;
 
+import com.advancedwoodprocessing.events.DestroyHandler;
 import com.advancedwoodprocessing.events.DropHandler;
 import com.advancedwoodprocessing.events.PlaceHandler;
 
@@ -12,5 +13,8 @@ public class EventHandler {
 		
 		PlaceHandler placeHandler = new PlaceHandler();
 		MinecraftForge.EVENT_BUS.register(placeHandler);
+		
+		DestroyHandler destroyHandler = new DestroyHandler();
+		MinecraftForge.EVENT_BUS.register(destroyHandler);
 	}
 }
