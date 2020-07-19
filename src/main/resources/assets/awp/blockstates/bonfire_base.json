@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "planks_count=0": { "model": "awp:campfire_0" },
+        "planks_count=1": { "model": "awp:campfire_1" },
+        "planks_count=2": { "model": "awp:campfire_2" },
+        "planks_count=3": { "model": "awp:campfire_3" },
+        "planks_count=4": { "model": "awp:campfire_4" }
+    }
+}

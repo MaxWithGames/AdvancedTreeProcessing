@@ -62,18 +62,13 @@ public class TileEntityCounter extends TileEntity implements ITickable{
 
 	@Override
 	public void update() {
-		//System.out.println(getCount());
 		for (int i = 0; i < this.lifespans.size(); i++)
 			this.lifespans.set(i, this.lifespans.get(i) + 1);
 		
 		this.lifespans.removeIf(e -> e >= ModItems.PLANK_BURNING.getMaxDamage());
 		this.count = lifespans.size();
-		
+			
 		sendUpdates();
-		//if (this.lifespans.size() >= 4)
-			//System.out.println("Bonfire is ready");
-		//else
-			//this.world.setBlockState(this.pos, ModBlocks.BONFIRE_BASE.getStateFromMeta(this.lifespans.size()).withProperty(BonfireBase.PLANKS_COUNT, this.getCount()));
 	}
 	
 	@Override

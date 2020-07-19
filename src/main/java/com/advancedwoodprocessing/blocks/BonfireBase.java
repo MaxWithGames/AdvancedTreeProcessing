@@ -30,14 +30,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BonfireBase extends BlockTileEntity<TileEntityCounter> implements IHasModel{
-	public static final PropertyInteger PLANKS_COUNT = PropertyInteger.create("planks_count", 0, 15);
+	public static final PropertyInteger PLANKS_COUNT = PropertyInteger.create("planks_count", 0, 4);
 	
 	@SideOnly(Side.CLIENT)
     @SuppressWarnings("incomplete-switch")
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
     {
 		int planksCount = this.getTileEntity(worldIn, pos).getCount();
-		System.out.println(planksCount);
 		
 		if (planksCount > 0) {
 			double d0 = (double)pos.getX() + 0.5D;
@@ -109,12 +108,15 @@ public class BonfireBase extends BlockTileEntity<TileEntityCounter> implements I
         return true;
     }
     
-    //@Override
-    //public void onBlockDestroyedByPlayer(World worldIn, BlockPos pos, IBlockState state)
-    //{
-    //}
+    @Override
+    public int getLightValue(IBlockState state)
+    {
+        return this.getMetaFromState(state) * 3;
+    }
     
 	public BonfireBase(String name, Material material, CreativeTabs tab) {
 		super(name, material, tab);
+		
+		setDefaultState(this.blockState.getBaseState().withProperty(PLANKS_COUNT, 0));
 	}
 }
