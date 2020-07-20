@@ -14,7 +14,7 @@ public class ContainerBonfire extends Container {
 
     private final TileEntityBonfire tileEntityBonfire;
 
-    public ContainerBonfire(TileEntityBonfire tileEntityBonfire, InventoryPlayer inventoryPlayer) {
+    public ContainerBonfire(InventoryPlayer inventoryPlayer, TileEntityBonfire tileEntityBonfire) {
         this.tileEntityBonfire = tileEntityBonfire;
 
         IItemHandler handler = tileEntityBonfire.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);

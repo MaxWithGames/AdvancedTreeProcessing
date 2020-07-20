@@ -110,16 +110,10 @@ public class BonfireBase extends BlockTileEntity<TileEntityCounter> implements I
         return true;
     }
     
-    @Override
-    public int getLightValue(IBlockState state)
-    {
-        return this.getMetaFromState(state) * 3;
-    }
-    
 	public BonfireBase(String name, Material material, CreativeTabs tab) {
 		super(name, material, tab);
 		
-		setLightLevel(1.0F);
+		setLightLevel(0.6F);
 		setLightOpacity(0);
 		setDefaultState(this.blockState.getBaseState().withProperty(PLANKS_COUNT, 0));
 	}

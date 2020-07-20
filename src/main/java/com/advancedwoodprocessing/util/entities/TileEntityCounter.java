@@ -69,7 +69,7 @@ public class TileEntityCounter extends TileEntity implements ITickable{
 		this.count = lifespans.size();
 			
 		sendUpdates();
-		
+
 		//Does literally nothing but saves some performance
 		if (this.getCount() == 0)
 			this.getWorld().setBlockState(pos, ModBlocks.BONFIRE.getDefaultState());

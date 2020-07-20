@@ -7,4 +7,6 @@ public class Reference {
 	public static final String ACCEPTED_VERSION = "[1.12.2]";
 	public static final String CLIENT_PROXY_CLASS = "com.advancedwoodprocessing.proxy.ClientProxy";
 	public static final String COMMON_PROXY_CLASS = "com.advancedwoodprocessing.proxy.CommonProxy";
+
+	public static final int GUI_BONFIRE = 1;
 }
