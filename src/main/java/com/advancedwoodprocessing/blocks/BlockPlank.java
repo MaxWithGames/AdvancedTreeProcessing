@@ -48,13 +48,14 @@ public class BlockPlank extends BlockBase implements IHasModel {
 
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-
-        if (playerIn.getHeldItem(hand).getItem() == ModItems.BOW_AND_STICK){
-            if (Math.random() >= 0.95) {
-            	playerIn.replaceItemInInventory(playerIn.inventory.currentItem, new ItemStack(ModItems.PLANK_BURNING));
-            	worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
-            }
-        }
+    	if (!worldIn.isRemote) {
+    		if (playerIn.getHeldItem(hand).getItem() == ModItems.BOW_AND_STICK){
+    			if (Math.random() >= 0.95) {
+    				playerIn.replaceItemInInventory(playerIn.inventory.currentItem, new ItemStack(ModItems.PLANK_BURNING));
+    				worldIn.setBlockState(pos, Blocks.AIR.getDefaultState());
+    			}
+    		}
+    	}
 
         return true;
     }

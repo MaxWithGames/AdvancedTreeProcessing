@@ -7,6 +7,7 @@ import com.advancedwoodprocessing.init.ModItems;
 import com.advancedwoodprocessing.util.BlockTileEntity;
 import com.advancedwoodprocessing.util.IHasModel;
 import com.advancedwoodprocessing.util.entities.TileEntityCounter;
+import com.advancedwoodprocessing.util.handlers.SoundHandler;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -14,6 +15,7 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -55,8 +57,15 @@ public class BonfireBase extends BlockTileEntity<TileEntityCounter> implements I
 			worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d3, d1, d2 + d4, 0.0D, s, 0.0D);
 		}
 		
-		if (planksCount > 0)
-			worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_FIRE_AMBIENT, SoundCategory.AMBIENT, 0.1F * planksCount, 0.0F, true);
+		if (planksCount > 0) {
+			worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_FIRE_AMBIENT, SoundCategory.AMBIENT, 0.1F * planksCount, 0.F, true);
+			if (rand.nextDouble() > 0.75D)
+				worldIn.playSound(
+						pos.getX(), pos.getY(), pos.getZ(), 
+						SoundHandler.FIRE_CLAPS.get(rand.nextInt(SoundHandler.FIRE_CLAPS.size())), 
+						SoundCategory.AMBIENT, 0.17F * planksCount * rand.nextFloat(), 0.0F, false
+				);
+		}
     }
 	
 	@Override
@@ -106,17 +115,18 @@ public class BonfireBase extends BlockTileEntity<TileEntityCounter> implements I
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
     	if (!worldIn.isRemote) {
-    		
-    		ItemStack held = playerIn.getHeldItem(hand);
-    		
-    		if (held.getItem() == ModItems.PLANK_BURNING) {
-    			
-    			NBTTagCompound ItemNBT = held.getTagCompound();
-    			
-    			if (ItemNBT.hasKey("time_created")) {
-    				this.getTileEntity(worldIn, pos).addLifespan(worldIn.getTotalWorldTime() - ItemNBT.getLong("time_created"));
-    				playerIn.replaceItemInInventory(playerIn.inventory.currentItem, new ItemStack(Blocks.AIR));
-    			}
+    		if (this.getTileEntity(worldIn, pos).getCount() < 4) {
+	    		ItemStack held = playerIn.getHeldItem(hand);
+	    		
+	    		if (held.getItem() == ModItems.PLANK_BURNING) {
+	    			
+	    			NBTTagCompound ItemNBT = held.getTagCompound();
+	    			
+	    			if (ItemNBT.hasKey("time_created")) {
+	    				this.getTileEntity(worldIn, pos).addLifespan(worldIn.getTotalWorldTime() - ItemNBT.getLong("time_created"));
+	    				playerIn.replaceItemInInventory(playerIn.inventory.currentItem, new ItemStack(Blocks.AIR));
+	    			}
+	    		}
     		}
     	}
     	
