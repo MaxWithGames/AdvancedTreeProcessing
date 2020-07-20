@@ -23,8 +23,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class WorkingBonfire extends BlockBase {
-    public static final PropertyInteger BURNING_PLANKS_COUNT = PropertyInteger.create("planks_count", 0, 4);
-    public static final PropertyInteger PLANKS_COUNT = PropertyInteger.create("planks_count", 0, 64);
+//    public static final PropertyInteger BURNING_PLANKS_COUNT = PropertyInteger.create("planks_count", 0, 3);
+//    public static final PropertyInteger PLANKS_COUNT = PropertyInteger.create("planks_count", 0, 3);
 
     public WorkingBonfire(String name, Material material, CreativeTabs tab) {
         super(name, material, tab);
@@ -80,19 +80,19 @@ public class WorkingBonfire extends BlockBase {
     public boolean hasTileEntity(IBlockState state) {
         return true;
     }
-
-	@Override
-	protected BlockStateContainer createBlockState() {
-	    return new BlockStateContainer(this, new IProperty[] {BURNING_PLANKS_COUNT, PLANKS_COUNT});
-	}
-
-	@Override
-	public IBlockState getStateFromMeta(int meta) {
-	    return getDefaultState().withProperty(PLANKS_COUNT, meta);
-	}
-
-	@Override
-	public int getMetaFromState(IBlockState state) {
-	    return state.getValue(PLANKS_COUNT).intValue();
-	}
+//
+//	@Override
+//	protected BlockStateContainer createBlockState() {
+//	    return new BlockStateContainer(this, new IProperty[] {BURNING_PLANKS_COUNT, PLANKS_COUNT});
+//	}
+//
+//	@Override
+//	public IBlockState getStateFromMeta(int meta) {
+//	    return getDefaultState().withProperty(PLANKS_COUNT, meta);
+//	}
+//
+//	@Override
+//	public int getMetaFromState(IBlockState state) {
+//	    return state.getValue(PLANKS_COUNT).intValue();
+//	}
 }
