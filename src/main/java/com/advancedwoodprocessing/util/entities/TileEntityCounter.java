@@ -2,19 +2,24 @@ package com.advancedwoodprocessing.util.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
 import com.advancedwoodprocessing.blocks.BonfireBase;
+import com.advancedwoodprocessing.events.PlaceHandler;
 import com.advancedwoodprocessing.init.ModBlocks;
 import com.advancedwoodprocessing.init.ModItems;
 
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
 
 public class TileEntityCounter extends TileEntity implements ITickable{
 
@@ -61,11 +66,20 @@ public class TileEntityCounter extends TileEntity implements ITickable{
     }
 
 	@Override
-	public void update() {		
+	public void update() {
 		for (int i = 0; i < this.lifespans.size(); i++)
 			this.lifespans.set(i, this.lifespans.get(i) + 1);
 		
-		this.lifespans.removeIf(e -> e >= ModItems.PLANK_BURNING.getMaxDamage());
+		if (this.lifespans.removeIf(e -> e >= ModItems.PLANK_BURNING.getMaxDamage())) {
+			if (!this.getWorld().isRemote) {
+				Random rand = new Random();
+				if (rand.nextDouble() > 0.9) {
+					BlockPos dropPos = this.pos.add(PlaceHandler.offsets.get(rand.nextInt(PlaceHandler.offsets.size())));
+					EntityItem coalDust = new EntityItem(this.getWorld(), dropPos.getX(), dropPos.getY(), dropPos.getZ(), new ItemStack(ModItems.COAL_DUST));
+					this.getWorld().spawnEntity(coalDust);
+				}
+			}
+		}
 		this.count = lifespans.size();
 			
 		sendUpdates();
