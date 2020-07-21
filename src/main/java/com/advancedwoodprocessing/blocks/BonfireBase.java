@@ -17,6 +17,8 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -131,6 +133,14 @@ public class BonfireBase extends BlockTileEntity<TileEntityCounter> implements I
     	}
     	
         return true;
+    }
+    
+    @Override
+    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
+    {
+    	if (!worldIn.isRemote)
+    		if (entityIn instanceof EntityLivingBase)
+    			entityIn.setFire(3);
     }
     
 	public BonfireBase(String name, Material material, CreativeTabs tab) {

@@ -2,6 +2,7 @@ package com.advancedwoodprocessing.blocks;
 
 import java.util.Random;
 
+import com.advancedwoodprocessing.events.DropHandler;
 import com.advancedwoodprocessing.init.ModBlocks;
 import com.advancedwoodprocessing.init.ModItems;
 import com.advancedwoodprocessing.util.BlockTileEntity;
@@ -67,7 +68,7 @@ public class SmallLog extends BlockBase implements IHasModel{
 				drops.add(new ItemStack(ModItems.PLANK, getPlanksDropCount()));
 				return;
 			}
-		drops.add(new ItemStack(ModBlocks.SMALL_LOG,  1));
+		drops.add(new ItemStack(this));
 	}
 	
 	@Override
@@ -88,6 +89,8 @@ public class SmallLog extends BlockBase implements IHasModel{
 		setLightOpacity(0);
 		
 		setDefaultState(this.blockState.getBaseState().withProperty(ON_WOODPROCESSOR, false));
+		
+		ModBlocks.SMALL_LOGS.add(this);
 	}
 	
 	@Override

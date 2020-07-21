@@ -123,7 +123,7 @@ public class TileEntityCounter extends TileEntity implements ITickable{
 	private void sendUpdates() {
 		this.getWorld().markBlockRangeForRenderUpdate(pos, pos);
 		this.getWorld().notifyBlockUpdate(pos, this.getWorld().getBlockState(pos), this.getWorld().getBlockState(pos), 3);
-		this.getWorld().scheduleBlockUpdate(pos,this.getBlockType(),0,0);
+		this.getWorld().scheduleBlockUpdate(pos, this.getBlockType(), 0, 0);
 		markDirty();
 	}
 
