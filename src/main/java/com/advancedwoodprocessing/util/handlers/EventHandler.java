@@ -16,5 +16,8 @@ public class EventHandler {
 		
 		DestroyHandler destroyHandler = new DestroyHandler();
 		MinecraftForge.EVENT_BUS.register(destroyHandler);
+		
+		SoundHandler soundHandler = new SoundHandler();
+		MinecraftForge.EVENT_BUS.register(soundHandler);
 	}
 }

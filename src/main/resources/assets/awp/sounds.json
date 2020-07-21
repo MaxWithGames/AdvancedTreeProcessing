@@ -1,0 +1,8 @@
+{
+"fire_clap_0": { "category": "block", "sounds": ["awp:fire_clap_0"], "subtitle": "awp.subtitle.fire_clap_0" },
+"fire_clap_1": { "category": "block", "sounds": ["awp:fire_clap_1"], "subtitle": "awp.subtitle.fire_clap_1" },
+"fire_clap_2": { "category": "block", "sounds": ["awp:fire_clap_2"], "subtitle": "awp.subtitle.fire_clap_2" },
+"fire_clap_3": { "category": "block", "sounds": ["awp:fire_clap_3"], "subtitle": "awp.subtitle.fire_clap_3" },
+"fire_clap_4": { "category": "block", "sounds": ["awp:fire_clap_4"], "subtitle": "awp.subtitle.fire_clap_4" },
+"fire_clap_5": { "category": "block", "sounds": ["awp:fire_clap_5"], "subtitle": "awp.subtitle.fire_clap_5" }
+}

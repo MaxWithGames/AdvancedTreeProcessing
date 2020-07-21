@@ -1,5 +1,9 @@
 package com.advancedwoodprocessing.events;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import com.advancedwoodprocessing.blocks.WoodProcessor;
 import com.advancedwoodprocessing.init.ModBlocks;
 import com.advancedwoodprocessing.items.tools.ItemKnife;
@@ -23,6 +27,36 @@ import net.minecraftforge.oredict.OreDictionary;
 public class DropHandler {
 	public static NonNullList<ItemStack> Woods = null;
 	
+	public static final ArrayList<String> woodNames = new ArrayList<String>(Arrays.asList(
+		"tile.log.oak",
+		"tile.log.big_oak",
+		"tile.log.birch",
+		"tile.log.acacia",
+		"tile.log.jungle",
+		"tile.log.spruce",
+		"tile.log_4.dead_log",
+		"tile.log_3.mahogany_log",
+		"tile.log_3.eucalyptus_log",
+		"tile.log_3.jacaranda_log",
+		"tile.log_3.ebony_log",
+		"tile.log_2.redwood_log",
+		"tile.log_2.pine_log",
+		"tile.log_2.willow_log",
+		"tile.log_2.hellbark_log",
+		"tile.log_1.palm_log",
+		"tile.log_1.mangrove_log",
+		"tile.log_1.ethereal_log",
+		"tile.log_1.magic_log",
+		"tile.log_0.umbran_log",
+		"tile.log_0.cherry_log",
+		"tile.log_0.sacred_oak_log",
+		"tile.log_0.fir_log"
+	));
+	
+	public static int getWoodType(String name) {
+		return woodNames.indexOf(name);
+	}
+	
 	@SubscribeEvent
 	public void scraper(HarvestDropsEvent event)
 	{
@@ -37,11 +71,13 @@ public class DropHandler {
 		
 		if (event.getWorld().isRemote || event.getHarvester() == null || event.isSilkTouching())
 			return;
-
+		
+		//System.out.println(event.getDrops().get(0).getUnlocalizedName());
+		
 		Item held = event.getHarvester().getHeldItemMainhand().getItem(); 	
 		Block block = event.getState().getBlock();
 		
-		if ((block == Blocks.LOG || block == Blocks.LOG2) && (held instanceof ItemScraper)) {
+		if ((checkBlockOreDict(new ItemStack(Item.getItemFromBlock(block)), Woods)) && (held instanceof ItemScraper)) {
 			event.getDrops().clear();
 			//event.setDropChance(1.0F);
 			//event.getDrops().add(new ItemStack(ModBlocks.WOODPROCESSOR));
@@ -49,7 +85,7 @@ public class DropHandler {
 			event.getWorld().setBlockState(event.getPos(), ModBlocks.WOODPROCESSOR.getDefaultState());
 		}
 
-		if ((block == Blocks.LOG || block == Blocks.LOG2) && (held instanceof ItemKnife)) {
+		if ((checkBlockOreDict(new ItemStack(Item.getItemFromBlock(block)), Woods)) && (held instanceof ItemKnife)) {
 			event.getDrops().clear();
 			//event.setDropChance(1.0F);
 			//event.getDrops().add(new ItemStack(ModBlocks.WOODPROCESSOR));
@@ -67,7 +103,7 @@ public class DropHandler {
 	}
 	
 	@SubscribeEvent
-	public void axe(HarvestDropsEvent event)
+	public void saw(HarvestDropsEvent event)
 	{
 		if (event.getWorld().isRemote || event.getHarvester() == null || event.isSilkTouching())
 			return;
@@ -75,10 +111,18 @@ public class DropHandler {
 		Item held = event.getHarvester().getHeldItemMainhand().getItem(); 
 		Block block = event.getState().getBlock();
 		
+		
 		if (checkBlockOreDict(new ItemStack(Item.getItemFromBlock(block)), Woods) && (held instanceof ItemSaw)) {
-			event.getDrops().clear();
 			event.setDropChance(1.0F);
-			event.getDrops().add(new ItemStack(ModBlocks.SMALL_LOG, 8));
+			
+			int woodNumber = 0;
+			if (woodNames.contains(event.getDrops().get(0).getUnlocalizedName())) {
+					woodNumber = woodNames.indexOf(event.getDrops().get(0).getUnlocalizedName());
+					System.out.println(woodNumber);
+			}
+			
+			event.getDrops().clear();
+			event.getDrops().add(new ItemStack(ModBlocks.SMALL_LOGS.get(woodNumber), 8));
 		}
 	}
 }
