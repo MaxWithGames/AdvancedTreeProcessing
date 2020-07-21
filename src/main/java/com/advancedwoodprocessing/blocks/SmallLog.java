@@ -75,8 +75,8 @@ public class SmallLog extends BlockBase implements IHasModel{
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
 		if (source.getBlockState(pos.add(0, -1, 0)).getBlock() instanceof WoodProcessor)
-			return new AxisAlignedBB(0.3125f, -0.25f, 0.3125f, 0.6875f, 0.25f, 0.6875f);
-        return new AxisAlignedBB(0.3125f, 0.0f, 0.3125f, 0.6875f, 0.5f, 0.6875f);
+			return new AxisAlignedBB(0.25f, -0.25f, 0.25f, 0.75f, 0.25f, 0.75f);
+        return new AxisAlignedBB(0.25f, 0.0f, 0.25f, 0.75f, 0.5f, 0.75f);
     }
 	
 	private int timer = 100;
