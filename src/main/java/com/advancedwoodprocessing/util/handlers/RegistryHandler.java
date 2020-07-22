@@ -47,10 +47,11 @@ public class RegistryHandler {
 	public static void preInitRegisters() {
 		EventHandler.registerEvents();
 		CraftingHandler.removeRecipes();
+		PacketHandler.registerMessages("awp");
 	}
 
 	public static void initRegisters(){
-		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance,new GuiHandlers());
+		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandlers());
 	}
 
 	public static void postInitRegisters() {
