@@ -1,6 +1,6 @@
 {
     "variants": {
-        "on_woodprocessor=false": { "model": "awp:tile_log_pin" },
-        "on_woodprocessor=true": { "model": "awp:tile_log_pin_low" }
+        "on_woodprocessor=false": { "model": "awp:tile_log_pine" },
+        "on_woodprocessor=true": { "model": "awp:tile_log_pine_low" }
     }
 }
