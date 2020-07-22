@@ -64,7 +64,27 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
         for(int i = 0;i < 4;i++){
             if(burning_plank[i].getItem() == ModItems.PLANK_BURNING){
                 add++;
+                NBTTagCompound nbt = new NBTTagCompound();
+                if (burning_plank[i].hasTagCompound())
+                    nbt = burning_plank[i].getTagCompound();
+                else
+                    nbt = new NBTTagCompound();
 
+                if (!nbt.hasKey("time_created")) {
+                    nbt.setLong("time_created", this.getWorld().getTotalWorldTime());
+                    burning_plank[i].setTagCompound(nbt);
+                }
+
+                if (!this.getWorld().isRemote) {
+                    long lifespan = this.getWorld().getTotalWorldTime() - burning_plank[i].getTagCompound().getLong("time_created");
+
+                    if (lifespan > burning_plank[i].getMaxDamage()) {
+
+//                        this.replaceItemInInventory(i, new ItemStack(ModItems.PLANK_BURNING));
+
+                    }else
+                        burning_plank[i].setItemDamage((int)lifespan);
+                }
             }
         }
 
