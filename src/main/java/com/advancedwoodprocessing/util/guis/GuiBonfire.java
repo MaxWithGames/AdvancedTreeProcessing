@@ -3,6 +3,9 @@ package com.advancedwoodprocessing.util.guis;
 import com.advancedwoodprocessing.util.Reference;
 import com.advancedwoodprocessing.util.containers.ContainerBonfire;
 import com.advancedwoodprocessing.util.entities.TileEntityBonfire;
+import com.advancedwoodprocessing.util.handlers.PacketHandler;
+import com.advancedwoodprocessing.util.packets.SliderPacket;
+
 import net.minecraft.client.gui.GuiPageButtonList;
 import net.minecraft.client.gui.GuiSlider;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -13,15 +16,15 @@ import net.minecraft.util.ResourceLocation;
 public class GuiBonfire extends GuiContainer {
     private static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MOD_ID + ":textures/gui/bonfire.png");
     private final InventoryPlayer player;
-    private final TileEntityBonfire tileentity;
+    private final TileEntityBonfire tileEntity;
     private GuiSlider slider = null;
 
-    public GuiBonfire(InventoryPlayer player, TileEntityBonfire tileentity) {
-        super(new ContainerBonfire(player, tileentity));
+    public GuiBonfire(InventoryPlayer player, TileEntityBonfire tileEntity) {
+        super(new ContainerBonfire(player, tileEntity));
 
 
         this.player = player;
-        this.tileentity = tileentity;
+        this.tileEntity = tileEntity;
     }
 
     @Override
@@ -36,17 +39,17 @@ public class GuiBonfire extends GuiContainer {
 
             @Override
             public void setEntryValue(int id, float value) {
-                tileentity.setField(1,(int) value);
+            	PacketHandler.INSTANCE.sendToServer(new SliderPacket(tileEntity.getPos(), (short)value));
             }
 
             @Override
             public void setEntryValue(int id, String value) {
 
             }
-        }, 0, this.guiLeft + 5, this.guiTop + 5, "test", 0, 3, tileentity.getField(1), new GuiSlider.FormatHelper() {
+        }, 0, this.guiLeft + 5, this.guiTop + 5, "test", 0, 3, tileEntity.getField(1), new GuiSlider.FormatHelper() {
             @Override
             public String getText(int id, String name, float value) {
-                return "test " + tileentity.getField(1);
+                return "test " + tileEntity.getField(1);
             }
         });
 
@@ -62,12 +65,12 @@ public class GuiBonfire extends GuiContainer {
         this.mc.getTextureManager().bindTexture(TEXTURES);
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
-        if(tileentity.getField(0) != -1){
-            double k =  ((double) tileentity.getField(0))/1200;
+        if(tileEntity.getField(0) != -1){
+            double k =  ((double) tileEntity.getField(0))/1200;
             int l = (int) (k * 24);
             this.drawTexturedModalRect(this.guiLeft + 82, this.guiTop + 13, 176, 0, l + 1, 16);
         }
-        int f = (18+8)*(tileentity.getField(1));
+        int f = (18+8)*(tileEntity.getField(1));
         this.drawTexturedModalRect(this.guiLeft + 44 + f, this.guiTop + 64, 176, 17, 8, 13);
     }
 }
