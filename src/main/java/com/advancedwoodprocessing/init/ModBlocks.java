@@ -31,5 +31,5 @@ public class ModBlocks {
 	public static final Block BLOCK_PLANK = new BlockPlank("block_plank", Material.WOOD, ModItems.AWT_TAB);
 	public static final Block BONFIRE_BASE = new BonfireBase("bonfire_base", Material.WOOD, ModItems.AWT_TAB);
 	public static final Block BONFIRE = new Bonfire("bonfire", Material.WOOD, ModItems.AWT_TAB);
-	public static final Block WPKKING_BONFIRE = new WorkingBonfire("working_bonfire", Material.WOOD, ModItems.AWT_TAB);
+	public static final Block WORKING_BONFIRE = new WorkingBonfire("working_bonfire", Material.WOOD, ModItems.AWT_TAB);
 }

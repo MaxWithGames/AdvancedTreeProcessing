@@ -15,12 +15,14 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 
 public class TileEntityBonfire extends TileEntity implements ITickable {
 
-    private ItemStackHandler handler = new ItemStackHandler(7);
+    public ItemStackHandler handler = new ItemStackHandler(7);
     private int burningProgress = -1;
     private int autoBurning = 1;
+    private int coockTime = 3000;
 
     public TileEntityBonfire(){
         super();
@@ -60,9 +62,15 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
         ItemStack in = this.handler.getStackInSlot(4);
         ItemStack out = this.handler.getStackInSlot(5);
 
+        boolean kill = true;
+        if(plank.getItem() == ModItems.PLANK){
+            kill = false;
+        }
+
         int add = 0;
         for(int i = 0;i < 4;i++){
             if(burning_plank[i].getItem() == ModItems.PLANK_BURNING){
+                kill = false;
                 add++;
                 NBTTagCompound nbt = new NBTTagCompound();
                 if (burning_plank[i].hasTagCompound())
@@ -80,7 +88,6 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
 
                     if (lifespan > burning_plank[i].getMaxDamage()) {
 
-//                        this.replaceItemInInventory(i, new ItemStack(ModItems.PLANK_BURNING));
                         burning_plank[i].shrink(1);
 
                     }else
@@ -93,7 +100,7 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
             if(burning_plank[i].isEmpty()){
                 if(plank.getItem() == ModItems.PLANK){
                     plank.shrink(1);
-//                    burning_plank[i]=
+                    handler.setStackInSlot(i,new ItemStack(ModItems.PLANK_BURNING,1));
                 }
             }
         }
@@ -111,9 +118,13 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
             burningProgress += add;
         }
 
-        if(burningProgress >= 1200){
+        if(burningProgress >= coockTime){
             in.shrink(1);
             burningProgress = -1;
+        }
+
+        if(kill){
+            this.getWorld().setBlockState(pos, ModBlocks.BONFIRE.getDefaultState());
         }
 
         sendUpdates();
@@ -166,8 +177,21 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
                 return this.burningProgress;
             case 1:
                 return this.autoBurning;
+            case 2:
+                return this.coockTime;
             default:
                 return 0;
+        }
+    }
+
+    public void setBurningPlanks(ArrayList<Long> lifespans){
+        NBTTagCompound nbt = new NBTTagCompound();
+
+        for (int i = 0;i < 4;i++) {
+            nbt.setLong("time_created", world.getTotalWorldTime() - lifespans.get(i));
+
+            handler.setStackInSlot(i, new ItemStack(ModItems.PLANK_BURNING, 1));
+            handler.getStackInSlot(i).setTagCompound(nbt);
         }
     }
 }

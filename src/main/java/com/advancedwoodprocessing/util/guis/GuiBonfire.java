@@ -19,7 +19,6 @@ public class GuiBonfire extends GuiContainer {
     public GuiBonfire(InventoryPlayer player, TileEntityBonfire tileentity) {
         super(new ContainerBonfire(player, tileentity));
 
-
         this.player = player;
         this.tileentity = tileentity;
     }
@@ -43,7 +42,7 @@ public class GuiBonfire extends GuiContainer {
             public void setEntryValue(int id, String value) {
 
             }
-        }, 0, this.guiLeft + 5, this.guiTop + 5, "test", 0, 3, tileentity.getField(1), new GuiSlider.FormatHelper() {
+        }, 0, this.guiLeft, this.guiTop - 20, "test", 0, 3, tileentity.getField(1), new GuiSlider.FormatHelper() {
             @Override
             public String getText(int id, String name, float value) {
                 return "test " + tileentity.getField(1);
@@ -63,7 +62,7 @@ public class GuiBonfire extends GuiContainer {
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
         if(tileentity.getField(0) != -1){
-            double k =  ((double) tileentity.getField(0))/1200;
+            double k =  ((double) tileentity.getField(0))/tileentity.getField(2);
             int l = (int) (k * 24);
             this.drawTexturedModalRect(this.guiLeft + 82, this.guiTop + 13, 176, 0, l + 1, 16);
         }

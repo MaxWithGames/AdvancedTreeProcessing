@@ -20,7 +20,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class PlaceHandler {
 	public static final ArrayList<Block> forbiddenBlocks = new ArrayList<Block>(Arrays.asList(
 		ModBlocks.BONFIRE,
-		ModBlocks.BONFIRE_BASE
+		ModBlocks.BONFIRE_BASE,
+		ModBlocks.WORKING_BONFIRE
 	));
 	
 	public static final ArrayList<Vec3i> offsets = new ArrayList<Vec3i>(Arrays.asList(
