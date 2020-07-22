@@ -60,9 +60,25 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
         ItemStack in = this.handler.getStackInSlot(4);
         ItemStack out = this.handler.getStackInSlot(5);
 
+        int add = 0;
+        for(int i = 0;i < 4;i++){
+            if(burning_plank[i].getItem() == ModItems.PLANK_BURNING){
+                add++;
+
+            }
+        }
+
         if(!in.isEmpty() && (burningProgress == -1)){
             burningProgress = 0;
-            System.out.println(burningProgress);
+
+        }
+
+        if(in.isEmpty() && (burningProgress != -1)){
+            burningProgress = -1;
+        }
+
+        if(!in.isEmpty() && (burningProgress != -1)){
+            burningProgress += add;
         }
 
         sendUpdates();
