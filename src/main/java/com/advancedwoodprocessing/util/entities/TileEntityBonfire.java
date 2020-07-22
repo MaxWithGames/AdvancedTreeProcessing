@@ -36,8 +36,8 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         super.writeToNBT(compound);
-        compound.setInteger("burningProgress", (short)this.burningProgress);
-        compound.setInteger("autoBurning", (short)this.autoBurning);
+        compound.setInteger("burningProgress", this.burningProgress);
+        compound.setInteger("autoBurning", this.autoBurning);
         compound.setTag("Inventory", this.handler.serializeNBT());
         return compound;
 

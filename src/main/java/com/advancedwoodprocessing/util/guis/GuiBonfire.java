@@ -19,9 +19,6 @@ public class GuiBonfire extends GuiContainer {
 
         this.player = player;
         this.tileentity = tileentity;
-
-//        GuiSlider slider = new GuiSlider(5,5,5,5,"",1,4,5,5);
-
     }
 
     @Override
@@ -38,13 +35,7 @@ public class GuiBonfire extends GuiContainer {
             int l = (int) (k * 24);
             this.drawTexturedModalRect(this.guiLeft + 82, this.guiTop + 13, 176, 0, l + 1, 16);
         }
-
-
         int f = (18+8)*(tileentity.getField(1));
         this.drawTexturedModalRect(this.guiLeft + 44 + f, this.guiTop + 64, 176, 17, 8, 13);
-
     }
-
-
-
 }

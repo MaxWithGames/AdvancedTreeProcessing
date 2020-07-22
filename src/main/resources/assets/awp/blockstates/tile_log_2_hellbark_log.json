@@ -1,6 +1,6 @@
 {
     "variants": {
-        "on_woodprocessor=false": { "model": "awp:small_log" },
-        "on_woodprocessor=true": { "model": "awp:small_log_low" }
+        "on_woodprocessor=false": { "model": "awp:tile_log_hellbark" },
+        "on_woodprocessor=true": { "model": "awp:tile_log_hellbark_low" }
     }
 }
