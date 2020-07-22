@@ -3,6 +3,7 @@ package com.advancedwoodprocessing.util.guis;
 import com.advancedwoodprocessing.util.Reference;
 import com.advancedwoodprocessing.util.containers.ContainerBonfire;
 import com.advancedwoodprocessing.util.entities.TileEntityBonfire;
+import net.minecraft.client.gui.GuiPageButtonList;
 import net.minecraft.client.gui.GuiSlider;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -13,12 +14,43 @@ public class GuiBonfire extends GuiContainer {
     private static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MOD_ID + ":textures/gui/bonfire.png");
     private final InventoryPlayer player;
     private final TileEntityBonfire tileentity;
+    private GuiSlider slider = null;
 
     public GuiBonfire(InventoryPlayer player, TileEntityBonfire tileentity) {
         super(new ContainerBonfire(player, tileentity));
 
+
         this.player = player;
         this.tileentity = tileentity;
+    }
+
+    @Override
+    public void initGui() {
+        super.initGui();
+
+        slider = new GuiSlider(new GuiPageButtonList.GuiResponder() {
+            @Override
+            public void setEntryValue(int id, boolean value) {
+
+            }
+
+            @Override
+            public void setEntryValue(int id, float value) {
+                tileentity.setField(1,(int) value);
+            }
+
+            @Override
+            public void setEntryValue(int id, String value) {
+
+            }
+        }, 0, this.guiLeft + 5, this.guiTop + 5, "test", 0, 3, tileentity.getField(1), new GuiSlider.FormatHelper() {
+            @Override
+            public String getText(int id, String name, float value) {
+                return "test " + tileentity.getField(1);
+            }
+        });
+
+        buttonList.add(slider);
     }
 
     @Override

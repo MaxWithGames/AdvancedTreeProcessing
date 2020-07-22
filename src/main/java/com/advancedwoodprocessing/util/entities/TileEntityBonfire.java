@@ -81,9 +81,19 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
                     if (lifespan > burning_plank[i].getMaxDamage()) {
 
 //                        this.replaceItemInInventory(i, new ItemStack(ModItems.PLANK_BURNING));
+                        burning_plank[i].shrink(1);
 
                     }else
                         burning_plank[i].setItemDamage((int)lifespan);
+                }
+            }
+        }
+
+        for(int i = 0; i <= autoBurning;i++){
+            if(burning_plank[i].isEmpty()){
+                if(plank.getItem() == ModItems.PLANK){
+                    plank.shrink(1);
+//                    burning_plank[i]=
                 }
             }
         }
@@ -99,6 +109,11 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
 
         if(!in.isEmpty() && (burningProgress != -1)){
             burningProgress += add;
+        }
+
+        if(burningProgress >= 1200){
+            in.shrink(1);
+            burningProgress = -1;
         }
 
         sendUpdates();
