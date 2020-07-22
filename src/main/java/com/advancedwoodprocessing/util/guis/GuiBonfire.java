@@ -39,7 +39,7 @@ public class GuiBonfire extends GuiContainer {
 
             @Override
             public void setEntryValue(int id, float value) {
-            	PacketHandler.INSTANCE.sendToServer(new SliderPacket(tileEntity.getPos(), (short)value));
+//            	PacketHandler.INSTANCE.sendToServer(new SliderPacket(tileEntity.getPos(), (short)value));
             }
 
             @Override
@@ -49,7 +49,7 @@ public class GuiBonfire extends GuiContainer {
         }, 0, this.guiLeft, this.guiTop - 20, "test", 0, 3, tileEntity.getField(1), new GuiSlider.FormatHelper() {
             @Override
             public String getText(int id, String name, float value) {
-                return "test " + tileEntity.getField(1);
+                return "auto tossing " + (tileEntity.getField(1) + 1) + " planks";
             }
         });
 
@@ -61,14 +61,22 @@ public class GuiBonfire extends GuiContainer {
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
+
+        for(int i = 0; i <= 3;i++){
+            if(Math.abs(slider.getSliderValue() - i) <= 0.5){
+                slider.setSliderValue(i,false);
+                PacketHandler.INSTANCE.sendToServer(new SliderPacket(tileEntity.getPos(), (short) i));
+            }
+        }
+
         GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
         this.mc.getTextureManager().bindTexture(TEXTURES);
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 
         if(tileEntity.getField(0) != -1){
-            double k =  ((double) tileEntity.getField(0))/1200;
+            double k =  ((double) tileEntity.getField(0))/tileEntity.getField(2);
             int l = (int) (k * 24);
-            this.drawTexturedModalRect(this.guiLeft + 82, this.guiTop + 13, 176, 0, l + 1, 16);
+            this.drawTexturedModalRect(this.guiLeft + 83, this.guiTop + 13, 176, 0, l + 1, 16);
         }
         int f = (18+8)*(tileEntity.getField(1));
         this.drawTexturedModalRect(this.guiLeft + 44 + f, this.guiTop + 64, 176, 17, 8, 13);

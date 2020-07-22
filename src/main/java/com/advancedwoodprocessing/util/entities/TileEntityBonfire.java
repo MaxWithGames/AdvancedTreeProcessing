@@ -3,6 +3,9 @@ package com.advancedwoodprocessing.util.entities;
 import com.advancedwoodprocessing.init.ModBlocks;
 import com.advancedwoodprocessing.init.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -105,20 +108,49 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
             }
         }
 
-        if(!in.isEmpty() && (burningProgress == -1)){
-            burningProgress = 0;
+        if(in.isEmpty()){
+            if(burningProgress != -1){
+                burningProgress = -1;
+            }
+        }else {
+            if(out.getCount() == out.getMaxStackSize()){
+                if(burningProgress != -1){
+                    burningProgress = -1;
+                }
+            }
 
+            if(out.isEmpty()){
+                if(recipe(in.getItem()) != null){
+                    if(burningProgress == -1){
+                        burningProgress = 0;
+                    }
+                }
+            }
+
+            if(!out.isEmpty() && out.getCount() < out.getMaxStackSize()){
+                if(recipe(in.getItem()) == out.getItem()){
+                    if(burningProgress == -1){
+                        burningProgress = 0;
+                    }
+                }else {
+                    if(burningProgress != -1){
+                        burningProgress = -1;
+                    }
+                }
+            }
         }
 
-        if(in.isEmpty() && (burningProgress != -1)){
-            burningProgress = -1;
-        }
-
-        if(!in.isEmpty() && (burningProgress != -1)){
+        if(burningProgress != -1){
             burningProgress += add;
         }
 
         if(burningProgress >= coockTime){
+            if(out.isEmpty()){
+                handler.setStackInSlot(5,new ItemStack(recipe(in.getItem()),1));
+            }else {
+                out.shrink(-1);
+            }
+
             in.shrink(1);
             burningProgress = -1;
         }
@@ -193,5 +225,21 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
             handler.setStackInSlot(i, new ItemStack(ModItems.PLANK_BURNING, 1));
             handler.getStackInSlot(i).setTagCompound(nbt);
         }
+    }
+
+    private Item recipe (Item in){
+
+        if (in == Items.STICK) return Item.getItemFromBlock(Blocks.TORCH);
+        if (in == Items.CLAY_BALL) return Items.BRICK;
+        if (in == Item.getItemFromBlock(Blocks.COBBLESTONE)) return Item.getItemFromBlock(Blocks.STONE);
+        if (in == Items.PORKCHOP) return Items.COOKED_PORKCHOP;
+        if (in == Items.CHICKEN) return Items.COOKED_CHICKEN;
+        if (in == Items.RABBIT) return Items.COOKED_RABBIT;
+        if (in == Items.MUTTON) return Items.COOKED_MUTTON;
+        if (in == Items.BEEF) return Items.COOKED_BEEF;
+        if (in == Items.POTATO) return Items.BAKED_POTATO;
+        if (in == Items.FISH) return Items.COOKED_FISH;
+
+        return null;
     }
 }
