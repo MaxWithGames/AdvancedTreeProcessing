@@ -1,5 +1,8 @@
 package com.advancedwoodprocessing.blocks;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import com.advancedwoodprocessing.events.DropHandler;
@@ -12,13 +15,16 @@ import com.advancedwoodprocessing.util.entities.TileEntityCounter;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -27,23 +33,34 @@ import net.minecraft.world.World;
 
 public class SmallLog extends BlockBase implements IHasModel{
 	static final PropertyBool ON_WOODPROCESSOR = PropertyBool.create("on_woodprocessor");
+	public static final PropertyDirection FACING = PropertyDirection.create("facing");
+	
+	public static final ArrayList<EnumFacing> POSSIBLE_FACES = new ArrayList<EnumFacing>(Arrays.asList(
+		EnumFacing.EAST,
+		EnumFacing.NORTH,
+		EnumFacing.SOUTH,
+		EnumFacing.WEST
+	));
+	
+	@Override
+	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+		return this.getDefaultState().withProperty(FACING, POSSIBLE_FACES.get((new Random()).nextInt(4)));
+	}
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
-	    return new BlockStateContainer(this, new IProperty[] {ON_WOODPROCESSOR});
+	    return new BlockStateContainer(this, new IProperty[] {FACING, ON_WOODPROCESSOR});
 	}
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-	    return getDefaultState().withProperty(ON_WOODPROCESSOR, meta == 0 ? false : true);
+	    return getDefaultState().withProperty(ON_WOODPROCESSOR, meta % 2 == 0 ? false : true).withProperty(FACING, EnumFacing.VALUES[meta / 2]);
 	}
 	
 	@Override
 	public int getMetaFromState(IBlockState state) {
-	    boolean bool = state.getValue(ON_WOODPROCESSOR).booleanValue();
-	    if (bool)
-	    	return 1;
-	    return 0;
+		int offset = state.getValue(ON_WOODPROCESSOR).booleanValue() ? 1 : 0;
+	    return state.getValue(FACING).getIndex() * 2 + offset;
 	}
 	
 	@Override
@@ -88,7 +105,7 @@ public class SmallLog extends BlockBase implements IHasModel{
 		setHarvestLevel("axe", 0);
 		setLightOpacity(0);
 		
-		setDefaultState(this.blockState.getBaseState().withProperty(ON_WOODPROCESSOR, false));
+		setDefaultState(this.blockState.getBaseState().withProperty(ON_WOODPROCESSOR, false).withProperty(FACING, EnumFacing.EAST));
 		
 		ModBlocks.SMALL_LOGS.add(this);
 	}

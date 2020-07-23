@@ -1,6 +1,16 @@
-{
-    "variants": {
-        "on_woodprocessor=false": { "model": "awp:tile_log_mahogany" },
-        "on_woodprocessor=true": { "model": "awp:tile_log_mahogany_low" }
-    }
+{ 
+ "variants": {
+"facing=up,on_woodprocessor=true":    { "model": "awp:tile_log_mahogany_low", "uvlock": true, "y": -180 },
+"facing=up,on_woodprocessor=false":    { "model": "awp:tile_log_mahogany", "uvlock": true, "y": -180 },
+"facing=down,on_woodprocessor=true":    { "model": "awp:tile_log_mahogany_low", "uvlock": true, "y": -90 },
+"facing=down,on_woodprocessor=false":    { "model": "awp:tile_log_mahogany", "uvlock": true, "y": -90 },
+"facing=east,on_woodprocessor=true":    { "model": "awp:tile_log_mahogany_low", "uvlock": true, "y": 0 },
+"facing=east,on_woodprocessor=false":    { "model": "awp:tile_log_mahogany", "uvlock": true, "y": 0 },
+"facing=west,on_woodprocessor=true":    { "model": "awp:tile_log_mahogany_low", "uvlock": true, "y": 90 },
+"facing=west,on_woodprocessor=false":    { "model": "awp:tile_log_mahogany", "uvlock": true, "y": 90 },
+"facing=south,on_woodprocessor=true":    { "model": "awp:tile_log_mahogany_low", "uvlock": true, "y": 180 },
+"facing=south,on_woodprocessor=false":    { "model": "awp:tile_log_mahogany", "uvlock": true, "y": 180 },
+"facing=north,on_woodprocessor=true":    { "model": "awp:tile_log_mahogany_low", "uvlock": true, "y": 270 },
+"facing=north,on_woodprocessor=false":    { "model": "awp:tile_log_mahogany", "uvlock": true, "y": 270 }
+}
 }
