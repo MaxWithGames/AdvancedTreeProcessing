@@ -65,7 +65,9 @@ public class GuiBonfire extends GuiContainer {
         for(int i = 0; i <= 3;i++){
             if(Math.abs(slider.getSliderValue() - i) <= 0.5){
                 slider.setSliderValue(i,false);
-                PacketHandler.INSTANCE.sendToServer(new SliderPacket(tileEntity.getPos(), (short) i));
+                if(tileEntity.getField(1) != i) {
+                    PacketHandler.INSTANCE.sendToServer(new SliderPacket(tileEntity.getPos(), (short) i));
+                }
             }
         }
 

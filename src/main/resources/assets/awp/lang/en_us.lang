@@ -23,6 +23,32 @@ tile.block_plank.name=Block plank
 tile.burning_block_plank.name=Burning block plank
 tile.bonfire_base.name=Fireplace with planks
 tile.bonfire.name=Fireplace
+tile.working_bonfire.name=Fireplace
+tile.tile_log_acacia.name=Acacia log
+tile.tile_log_big_oak.name=Dark Oak log
+tile.tile_log_birch.name=Birch log
+tile.tile_log_0_cherry_log.name=Cherry log
+tile.tile_log_4_dead_log.name=Dead log
+tile.tile_log_3_ebony_log.name=Ebony log
+tile.tile_log_1_ethereal_log.name=Ethereal log
+tile.tile_log_3_eucalyptus_log.name=Eucalyptus log
+tile.tile_log_0_fir_log.name=Fir log
+tile.tile_log_2_hellbark_log.name=Hellbark log
+tile.tile_log_3_jacaranda_log.name=Jacaranda log
+tile.tile_log_jungle.name=Jungle log
+tile.tile_log_1_magic_log.name=Magic log
+tile.tile_log_3_mahogany_log.name=Mahogany log
+tile.tile_log_1_mangrove_log.name=Mangrove log
+tile.tile_log_oak.name=Oak log
+tile.tile_log_1_palm_log.name=Palm log
+tile.tile_log_2_pine_log.name=Pine log
+tile.tile_log_2_redwood_log.name=Redwood log
+tile.tile_log_0_sacred_oak_log.name=Sacred Oak log
+tile.tile_log_spruce.name=Spruce log
+tile.tile_log_0_umbran_log.name=Umbran log
+tile.tile_log_2_willow_log.name=Willow log
+
+
 
 //Tabs
 itemGroup.awp=Advanced Wood Processing
