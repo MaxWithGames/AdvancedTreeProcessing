@@ -82,7 +82,10 @@ public class SmallLog extends BlockBase implements IHasModel{
 		if (this.harvesters != null)
 			if ((this.harvesters.get().getHeldItemMainhand().getItem() instanceof ItemAxe) &&  
 			(world.getBlockState(pos.add(0, -1, 0)).getBlock() instanceof WoodProcessor)) {
-				drops.add(new ItemStack(ModItems.PLANK, getPlanksDropCount()));
+				for (Item plank: ModItems.PLANKS) {
+					if ((this.getRegistryName().toString() + "_plank").equals(plank.getRegistryName().toString()))
+						drops.add(new ItemStack(plank, getPlanksDropCount()));
+				}
 				return;
 			}
 		drops.add(new ItemStack(this));

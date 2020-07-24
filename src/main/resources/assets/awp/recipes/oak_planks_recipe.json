@@ -6,12 +6,12 @@
     ],
     "key": {
         "S": {
-            "item": "awp:plank"
+            "type": "forge:ore_dict",
+            "ore": "awpPlank"
         }
     },
     "result": {
-        "item": "minecraft:planks",
-        "data": 0,
+        "item": "awp:block_plank",
         "count": 1
     }
 }
