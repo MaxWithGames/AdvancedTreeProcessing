@@ -80,6 +80,8 @@ public class WorkingBonfire extends BlockTileEntity<TileEntityBonfire> {
                     if (((TileEntityBonfire) worldIn.getTileEntity(pos)).handler.getStackInSlot(6).getItem() == ModItems.PLANK) {
                         ((TileEntityBonfire) worldIn.getTileEntity(pos)).handler.getStackInSlot(6).shrink(-1);
                         playerIn.getHeldItem(hand).shrink(1);
+                    }else{
+                        playerIn.openGui(Main.instance, Reference.GUI_BONFIRE, worldIn, pos.getX(), pos.getY(), pos.getZ());
                     }
                 }
             }else {
