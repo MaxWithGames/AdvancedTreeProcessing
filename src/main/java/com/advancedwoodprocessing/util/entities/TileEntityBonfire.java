@@ -24,7 +24,7 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
 
     public ItemStackHandler handler = new ItemStackHandler(7);
     private int burningProgress = -1;
-    private int autoBurning = 1;
+    private int autoBurning = 0;
     private int coockTime = 3000;
 
     public TileEntityBonfire(){
