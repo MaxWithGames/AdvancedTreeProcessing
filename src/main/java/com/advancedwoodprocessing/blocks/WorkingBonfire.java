@@ -72,12 +72,12 @@ public class WorkingBonfire extends BlockTileEntity<TileEntityBonfire> {
     {
         if(!worldIn.isRemote) {
 
-            if((playerIn.getHeldItem(hand).getItem() == ModItems.PLANK)&&(((TileEntityBonfire)worldIn.getTileEntity(pos))).handler.getStackInSlot(6).getCount() < 64){
+            if((ModItems.PLANKS.contains(playerIn.getHeldItem(hand).getItem()))&&(((TileEntityBonfire)worldIn.getTileEntity(pos))).handler.getStackInSlot(6).getCount() < 64){
                 if(((TileEntityBonfire)worldIn.getTileEntity(pos)).handler.getStackInSlot(6).isEmpty()){
-                    ((TileEntityBonfire)worldIn.getTileEntity(pos)).handler.setStackInSlot(6, new ItemStack(ModItems.PLANK,1));
+                    ((TileEntityBonfire)worldIn.getTileEntity(pos)).handler.setStackInSlot(6, new ItemStack(playerIn.getHeldItem(hand).getItem(),1));
                     playerIn.getHeldItem(hand).shrink(1);
                 }else {
-                    if (((TileEntityBonfire) worldIn.getTileEntity(pos)).handler.getStackInSlot(6).getItem() == ModItems.PLANK) {
+                    if (ModItems.PLANKS.contains(((TileEntityBonfire) worldIn.getTileEntity(pos)).handler.getStackInSlot(6).getItem())) {
                         ((TileEntityBonfire) worldIn.getTileEntity(pos)).handler.getStackInSlot(6).shrink(-1);
                         playerIn.getHeldItem(hand).shrink(1);
                     }else{

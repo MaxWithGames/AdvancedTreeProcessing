@@ -9,6 +9,7 @@ import com.advancedwoodprocessing.util.handlers.EventHandler;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -22,6 +23,8 @@ public class RegistryHandler {
 	@SubscribeEvent
 	public static void onItemRegister(RegistryEvent.Register<Item> event) {
 		event.getRegistry().registerAll(ModItems.ITEMS.toArray(new Item[0]));
+		for (Item plank: ModItems.PLANKS)
+			OreDictionary.registerOre("awpPlank", new ItemStack(plank));
 	}
 	
 	@SubscribeEvent

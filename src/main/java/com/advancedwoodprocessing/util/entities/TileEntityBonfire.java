@@ -66,7 +66,7 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
         ItemStack out = this.handler.getStackInSlot(5);
 
         boolean kill = true;
-        if(plank.getItem() == ModItems.PLANK){
+        if(ModItems.PLANKS.contains(plank.getItem())){
             kill = false;
         }
 
@@ -101,7 +101,7 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
 
         for(int i = 0; i <= autoBurning;i++){
             if(burning_plank[i].isEmpty()){
-                if(plank.getItem() == ModItems.PLANK){
+                if(ModItems.PLANKS.contains(plank.getItem())){
                     plank.shrink(1);
                     handler.setStackInSlot(i,new ItemStack(ModItems.PLANK_BURNING,1));
                 }

@@ -3,6 +3,8 @@ package com.advancedwoodprocessing.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.advancedwoodprocessing.blocks.SmallLog;
+import com.advancedwoodprocessing.events.DropHandler;
 import com.advancedwoodprocessing.items.BurningPlank;
 import com.advancedwoodprocessing.items.ItemBase;
 import com.advancedwoodprocessing.items.tools.ItemKnife;
@@ -10,6 +12,8 @@ import com.advancedwoodprocessing.items.tools.ItemSaw;
 import com.advancedwoodprocessing.items.tools.ItemScraper;
 import com.advancedwoodprocessing.items.tools.ItemToolAxe;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
@@ -59,7 +63,14 @@ public class ModItems {
 	public static final ItemAxe DIAMOND_SAW = new ItemSaw("diamond_saw",MATERIAL_DIAMOND_SAW, AWT_TAB, 6.0f, -2.0f);
 
 	public static final Item FLINT_AXE_HEAD = new ItemBase("flint_axe_head", AWT_TAB);
-	public static final Item PLANK = new ItemBase("plank", AWT_TAB);
+	//public static final Item PLANK = new ItemBase("plank", AWT_TAB);
+	public static final List<Item> PLANKS = new ArrayList<Item>();
+	
+	static {
+		for (String name : DropHandler.woodNames)
+			PLANKS.add(new ItemBase(name.replaceAll("\\.", "_") + "_plank", ModItems.AWT_TAB));
+	}
+	
 	public static final Item HARDEN_FLINT = new ItemBase("harden_flint", AWT_TAB);
 	public static final Item FLINT_AND_CLAY = new ItemBase("flint_and_clay", AWT_TAB);
 	
