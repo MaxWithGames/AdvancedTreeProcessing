@@ -73,6 +73,7 @@ public class ModItems {
 	
 	public static final Item HARDEN_FLINT = new ItemBase("harden_flint", AWT_TAB);
 	public static final Item FLINT_AND_CLAY = new ItemBase("flint_and_clay", AWT_TAB);
+	public static final Item STRING_FOR_BOW = new ItemBase("string_for_bow", AWT_TAB);
 	
 	public static final Item COAL_DUST = new ItemBase("awp_coal_dust", AWT_TAB);
 	public static final Item BOW_AND_STICK = new ItemBase("bow_and_stick", AWT_TAB).setMaxStackSize(1);

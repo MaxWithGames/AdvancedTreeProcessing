@@ -38,6 +38,7 @@ item.tile_log_0_fir_log_plank.name=Fir plank
 item.tile_log_1_palm_log_plank.name=Palm plank
 item.tile_log_4_dead_log_plank.name=Dead plank
 item.tile_log_3_ebony_log_plank.name=Ebony plank
+item.string_for_bow.name=String for bow
 
 //Blocks
 tile.woodprocessor.name=Wood processor

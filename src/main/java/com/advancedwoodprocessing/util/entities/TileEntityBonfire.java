@@ -239,6 +239,7 @@ public class TileEntityBonfire extends TileEntity implements ITickable {
         if (in == Items.BEEF) return Items.COOKED_BEEF;
         if (in == Items.POTATO) return Items.BAKED_POTATO;
         if (in == Items.FISH) return Items.COOKED_FISH;
+        if (in == Item.getItemFromBlock(Blocks.SAND)) return Item.getItemFromBlock(Blocks.GLASS);
 
         return null;
     }
