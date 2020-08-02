@@ -1,0 +1,11 @@
+{
+  "type": "industrialrenewal:lathe",
+  "process_time": 60,
+  "input": {
+    "item": "refinedstorage:silicon"
+  },
+  "result": {
+    "item": "awp:silicon_die",
+    "count": 1
+  }
+}

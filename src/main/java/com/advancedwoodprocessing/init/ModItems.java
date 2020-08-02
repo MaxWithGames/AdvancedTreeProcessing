@@ -70,7 +70,8 @@ public class ModItems {
 		for (String name : DropHandler.woodNames)
 			PLANKS.add(new ItemBase(name.replaceAll("\\.", "_") + "_plank", ModItems.AWT_TAB));
 	}
-	
+
+	public static final Item SILICON_DIE = new ItemBase("silicon_die", AWT_TAB);
 	public static final Item HARDEN_FLINT = new ItemBase("harden_flint", AWT_TAB);
 	public static final Item FLINT_AND_CLAY = new ItemBase("flint_and_clay", AWT_TAB);
 	public static final Item STRING_FOR_BOW = new ItemBase("string_for_bow", AWT_TAB);
